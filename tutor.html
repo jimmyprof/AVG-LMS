@@ -1,0 +1,83 @@
+<!-- LMS Upload & Quiz Extension -->
+<!-- Tutor Upload Interface -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutor Dashboard - Upload Content</title>
+  <link rel="stylesheet" href="tutor.css">
+   
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Avec Gazelle LMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#courses">Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#quiz">Quiz</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <h2>Tutor Dashboard</h2>
+    <h3>Upload Lesson Content</h3>
+    <form id="uploadForm">
+      <input type="text" placeholder="Module Title" required><br>
+      <label>Video Link (YouTube/Vimeo):</label>
+      <input type="url" placeholder="https://..." required><br>
+      <label>Upload PDF Resource:</label>
+      <input type="file" accept="application/pdf" required><br>
+      <button type="submit">Upload</button>
+    </form>
+    <hr>
+    <h3>Create Quiz</h3>
+    <form id="quizForm">
+      <input type="text" id="quizQuestion" placeholder="Enter quiz question" required><br>
+      <input type="text" id="optionA" placeholder="Option A" required><br>
+      <input type="text" id="optionB" placeholder="Option B" required><br>
+      <input type="text" id="optionC" placeholder="Option C" required><br>
+      <input type="text" id="correctAnswer" placeholder="Correct Option (A/B/C)" required><br>
+      <button type="submit">Save Quiz</button>
+    </form>
+    <br>
+    <a href="main.html">Logout</a>
+  </div>
+
+  <script>
+    document.getElementById("uploadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Content uploaded successfully (simulated).");
+    });
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const q = document.getElementById("quizQuestion").value;
+      const a = document.getElementById("optionA").value;
+      const b = document.getElementById("optionB").value;
+      const c = document.getElementById("optionC").value;
+      const correct = document.getElementById("correctAnswer").value.toUpperCase();
+      localStorage.setItem("quiz", JSON.stringify({q, a, b, c, correct}));
+      alert("Quiz saved!");
+    });
+  </script>
+</body>
+</html>
